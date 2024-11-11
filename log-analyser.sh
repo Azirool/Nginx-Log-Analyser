@@ -11,3 +11,6 @@ head -5 | \
 awk '{print $2 " - " $1 " requests"}'
 
 echo "Top 5 most requested path"
+awk '{ print $7 }' "$LOG_FILE" | sort | uniq -c | sort -nr | head -5 | while read count path; do
+  echo "$path - $count requests"
+done
